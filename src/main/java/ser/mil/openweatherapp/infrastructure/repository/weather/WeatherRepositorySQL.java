@@ -1,0 +1,48 @@
+package ser.mil.openweatherapp.infrastructure.repository.weather;
+
+import org.springframework.stereotype.Component;
+import ser.mil.openweatherapp.domain.model.Weather;
+import ser.mil.openweatherapp.domain.repository.WeatherRepository;
+
+import java.time.OffsetDateTime;
+import java.util.Optional;
+
+@Component
+public class WeatherRepositorySQL implements WeatherRepository {
+    private final WeatherRepositorySpringData weatherRepositorySpringData;
+
+    public WeatherRepositorySQL(WeatherRepositorySpringData weatherRepositorySpringData) {
+        this.weatherRepositorySpringData = weatherRepositorySpringData;
+    }
+
+    @Override
+    public Weather save(Weather weather) {
+       WeatherEntity weatherEntity = new WeatherEntity();
+
+       weatherEntity.setCityName(weather.cityName());
+       weatherEntity.setReadAt(weather.readAt());
+       weatherEntity.setTemp(weather.temp());
+       weatherEntity.setPresure(weather.presure());
+       weatherEntity.setWindSpeed(weather.windSpeed());
+       weatherRepositorySpringData.save(weatherEntity);
+       return weather;
+    }
+
+    @Override
+    public boolean existsByCityName(String cityName, OffsetDateTime since) {
+        return weatherRepositorySpringData.existsByCityNameIgnoreCaseAndReadAtAfter(cityName, since);
+    }
+
+    @Override
+    public Optional<Weather> findLastForCity(String cityName) {
+        return weatherRepositorySpringData.findTopByCityNameIgnoreCaseOrderByReadAtDesc(cityName)
+                .map(e -> new Weather(
+                        e.getId(),
+                        e.getCityName(),
+                        e.getReadAt(),
+                        e.getTemp(),
+                        e.getPresure(),
+                        e.getWindSpeed()
+                ));
+    }
+}
