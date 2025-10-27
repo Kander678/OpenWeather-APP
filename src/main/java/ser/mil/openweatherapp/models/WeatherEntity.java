@@ -1,4 +1,4 @@
-package ser.mil.openweatherapp.infrastructure.repository.weather;
+package ser.mil.openweatherapp.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

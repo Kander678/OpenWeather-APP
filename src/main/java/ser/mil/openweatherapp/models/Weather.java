@@ -1,4 +1,4 @@
-package ser.mil.openweatherapp.domain.model;
+package ser.mil.openweatherapp.models;
 
 import java.time.OffsetDateTime;
 

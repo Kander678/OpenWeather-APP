@@ -1,15 +1,13 @@
-package ser.mil.openweatherapp.domain.service;
+package ser.mil.openweatherapp.services;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import org.w3c.dom.DOMException;
-import ser.mil.openweatherapp.domain.model.Weather;
-import ser.mil.openweatherapp.domain.repository.WeatherRepository;
+import ser.mil.openweatherapp.models.Weather;
+import ser.mil.openweatherapp.repositories.WeatherRepository;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;

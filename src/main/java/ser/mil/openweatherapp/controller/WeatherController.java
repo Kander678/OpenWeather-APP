@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ser.mil.openweatherapp.domain.model.Weather;
-import ser.mil.openweatherapp.domain.service.WeatherService;
+import ser.mil.openweatherapp.models.Weather;
+import ser.mil.openweatherapp.services.WeatherService;
 
 @RestController
 @RequestMapping("/weather")

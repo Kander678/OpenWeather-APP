@@ -1,6 +1,6 @@
-package ser.mil.openweatherapp.domain.repository;
+package ser.mil.openweatherapp.repositories;
 
-import ser.mil.openweatherapp.domain.model.Weather;
+import ser.mil.openweatherapp.models.Weather;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;
