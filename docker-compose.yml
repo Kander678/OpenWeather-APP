@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  openWeatherDb:
+    container_name: open_weather_db
+    image: postgres:17.5
+    environment:
+      POSTGRES_DB: openWeatherDb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "1000:5432"
