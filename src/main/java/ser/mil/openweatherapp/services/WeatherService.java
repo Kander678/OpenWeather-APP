@@ -69,4 +69,8 @@ public class WeatherService {
             throw new IllegalStateException("Błąd pobierania danych pogodowych dla: " + city, e);
         }
     }
+    public Weather createWeather(Weather weather) {
+        return weatherRepository.save(weather);
+    }
+
 }

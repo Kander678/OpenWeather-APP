@@ -5,7 +5,9 @@ import ser.mil.openweatherapp.models.Weather;
 import ser.mil.openweatherapp.models.WeatherEntity;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class WeatherRepositorySQL implements WeatherRepository {
@@ -44,5 +46,17 @@ public class WeatherRepositorySQL implements WeatherRepository {
                         e.getPresure(),
                         e.getWindSpeed()
                 ));
+    }
+
+    @Override
+    public List<Weather> findAll() {
+        return weatherRepositorySpringData.findAll().stream().map(e -> new Weather(
+                e.getId(),
+                e.getCityName(),
+                e.getReadAt(),
+                e.getTemp(),
+                e.getPresure(),
+                e.getWindSpeed()
+        )).collect(Collectors.toList());
     }
 }
