@@ -1,9 +1,9 @@
 package ser.mil.openweatherapp.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ser.mil.openweatherapp.response.ApiResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ser.mil.openweatherapp.models.Weather;
 import ser.mil.openweatherapp.services.WeatherService;
 
@@ -20,12 +20,5 @@ public class WeatherController {
     public Weather getWeather(@PathVariable String city) {
         return weatherService.fetchAndStore(city);
     }
-
-
-    @PostMapping
-    public ResponseEntity<ApiResponse> createWeather(@RequestBody Weather weather) {
-        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(weatherService.createWeather(weather)));
-    }
-
 
 }
